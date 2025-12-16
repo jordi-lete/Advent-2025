@@ -73,12 +73,11 @@ class Solution
             std::sort(edges.begin(), edges.end(), [](const Edges &a, const Edges &b) { return a.dist < b.dist; });
 
             // Now need to create the links
-            std::vector<std::vector<int>> links = getLinks(edges, Coords.size());
+            std::vector<std::vector<int>> links = getLinks(edges);
 
             // sort the links by the number of elements in the circuit
             std::sort(links.begin(), links.end(), [](const std::vector<int> &a, const std::vector<int> &b) { return a.size() > b.size(); });
 
-            std::cout << links[0].size() << std::endl;
             if (links.size() >= 3)
             {
                 // Result is the number of elements in the 3 longest chains multiplied together
@@ -89,7 +88,7 @@ class Solution
             }
         }
 
-        std::vector<std::vector<int>> getLinks(std::vector<Edges>& edges, const int numCoords)
+        std::vector<std::vector<int>> getLinks(std::vector<Edges>& edges)
         {
             std::vector<std::vector<int>> links;
 
