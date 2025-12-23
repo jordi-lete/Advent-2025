@@ -50,8 +50,20 @@ class Solution:
         
         return graph
 
-    def count_paths():
-        return 1
+    def find_all_paths(self, graph, start, end, visited):
+
+        if start == end:
+            return visited
+        
+        if start not in graph:
+            return visited
+        
+        for node in graph[start]:
+            if node not in visited:
+                visited.add(node)
+                new_visited = self.find_all_paths(graph, node, end, visited)
+
+        return new_visited
 
     def day_11(self, input):
         graph = self.process_input(input)
